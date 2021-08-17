@@ -1,7 +1,9 @@
 package br.com.zup.edu.pix.exception
 
 import io.grpc.Status
+import javax.inject.Singleton
 
+@Singleton
 class ChavePixExceptionHandler : ExceptionHandler<ChavePixException> {
 
     override fun handle(exception: ChavePixException): ExceptionHandler.StatusWithDetails {

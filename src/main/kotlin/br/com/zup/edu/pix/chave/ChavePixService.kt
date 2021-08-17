@@ -18,13 +18,10 @@ class ChavePixService(
     @Inject val itauClient: ContasItauClient
 ) {
 
-    private val LOGGER = LoggerFactory.getLogger(this::class.java)
-
     @Transactional
     fun registra(@Valid novaChavePix: NovaChavePix): ChavePix {
 
         if (chavePixRepository.existsByChave(novaChavePix.chave)) {
-            LOGGER.error("CHAVE PIX '${novaChavePix.chave}'")
             throw ChavePixException("Chave Pix '${novaChavePix.chave}' existente")
         }
 
@@ -32,11 +29,8 @@ class ChavePixService(
         val conta = response.body()?.toModel() ?: throw IllegalStateException("Cliente não encontrado")
 
         val chave = novaChavePix.toModel(conta)
-        LOGGER.info("CHAVE PIX '${chave.chave}'")
+
         chavePixRepository.save(chave)
-        LOGGER.error("CHAVE PIX '${chave.chave}'")
-        LOGGER.info("CHAVE PIX ")
-        LOGGER.info("CHAVE PIX '${chave.id}'")
 
         return chave
     }
