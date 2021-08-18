@@ -9,8 +9,13 @@ import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.DetalhesDaConta
 import br.com.zup.edu.pix.conta.InstituicaoResponse
 import br.com.zup.edu.pix.conta.TitularResponse
+import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
+import io.micronaut.context.annotation.Bean
+import io.micronaut.context.annotation.Factory
+import io.micronaut.grpc.annotation.GrpcChannel
+import io.micronaut.grpc.server.GrpcServerChannel
 import io.micronaut.http.HttpResponse
 import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
@@ -22,6 +27,7 @@ import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
 @MicronautTest(transactional = false)
 internal class ChavePixEndPointTest(
@@ -101,12 +107,34 @@ internal class ChavePixEndPointTest(
     }
 
     @Test
+    fun `nao deve registrar chave quando nao encontrar dados da conta do cliente`() {
+        Mockito.`when`(itauClient.buscarContaPorTipo(CLIENTE_ID, CONTA_CORRENTE))
+            .thenReturn(HttpResponse.notFound())
+
+        val erro = assertThrows<StatusRuntimeException> {
+            grpcClient.registrar(
+                RegistraChavePixRequest.newBuilder()
+                    .setClienteId(CLIENTE_ID)
+                    .setTipoDeChave(TipoDeChave.CPF)
+                    .setChave("01567920997")
+                    .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
+                    .build()
+            )
+        }
+
+        with(erro) {
+            assertEquals(Status.FAILED_PRECONDITION.code, status.code)
+            assertEquals("Cliente não encontrado", status.description)
+        }
+    }
+
+    @Test
     fun `nao deve registrar nova chave quando ela ja existir`() {
 
         repository.save(
             ChavePix(
                 clienteId = UUID.fromString(CLIENTE_ID),
-                tipoDeChave = br.com.zup.edu.pix.chave.TipoDeChave.CPF,
+                tipoDeChave = br.com.zup.edu.pix.chave.TipoDeChave.EMAIL,
                 chave = "teste@zup.com.br",
                 tipoDeConta = br.com.zup.edu.pix.conta.TipoDeConta.CONTA_CORRENTE,
                 conta = ContaAssociada(
@@ -137,28 +165,6 @@ internal class ChavePixEndPointTest(
     }
 
     @Test
-    fun `nao deve registrar chave quando nao encontrar dados da conta do cliente`() {
-        Mockito.`when`(itauClient.buscarContaPorTipo(CLIENTE_ID, CONTA_CORRENTE))
-            .thenReturn(HttpResponse.notFound())
-
-        val erro = assertThrows<StatusRuntimeException> {
-            grpcClient.registrar(
-                RegistraChavePixRequest.newBuilder()
-                    .setClienteId(CLIENTE_ID)
-                    .setTipoDeChave(TipoDeChave.CPF)
-                    .setChave("01567920997")
-                    .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
-                    .build()
-            )
-        }
-
-        with(erro) {
-            assertEquals(Status.FAILED_PRECONDITION.code, status.code)
-            assertEquals("Cliente não encontrado", status.description)
-        }
-    }
-
-    @Test
     fun `nao deve registrar chave com parametros invalidos`() {
 
         val erro = assertThrows<StatusRuntimeException> {
@@ -176,6 +182,15 @@ internal class ChavePixEndPointTest(
     @MockBean(ContasItauClient::class)
     fun itauClient(): ContasItauClient? {
         return Mockito.mock(ContasItauClient::class.java)
+    }
+
+    @Factory
+    class Client {
+
+        @Bean
+        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): RegistraChaveGrpcServiceGrpc.RegistraChaveGrpcServiceBlockingStub {
+            return RegistraChaveGrpcServiceGrpc.newBlockingStub(channel)
+        }
     }
 
     private fun detalhesDaConta(): DetalhesDaConta {

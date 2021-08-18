@@ -19,11 +19,13 @@ class RemoveChaveEndpoint(@Inject private val service: RemoveChaveService) :
     ) {
         service.remover(request.clienteId, request.pixId)
 
-        responseObserver.onNext(RemoveChavePixResponse.newBuilder()
-            .setClientId(request.clienteId)
-            .setPixId(request.pixId)
-            .setMessage("Chave removida com sucesso")
-            .build())
+        responseObserver.onNext(
+            RemoveChavePixResponse.newBuilder()
+                .setClientId(request.clienteId)
+                .setPixId(request.pixId)
+                .setMessage("Chave removida com sucesso")
+                .build()
+        )
         responseObserver.onCompleted()
     }
 }
