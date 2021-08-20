@@ -18,9 +18,12 @@ class ChavePixService(
     @Inject val itauClient: ContasItauClient
 ) {
 
+    private val logger = LoggerFactory.getLogger(ChavePixService::class.java)
+
     @Transactional
     fun registra(@Valid novaChavePix: NovaChavePix): ChavePix {
 
+        logger.info(novaChavePix.chave)
         if (chavePixRepository.existsByChave(novaChavePix.chave)) {
             throw ChavePixException("Chave Pix '${novaChavePix.chave}' existente")
         }

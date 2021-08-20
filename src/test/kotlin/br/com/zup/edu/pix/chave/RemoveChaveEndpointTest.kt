@@ -73,17 +73,6 @@ internal class RemoveChaveEndpointTest(
 
     }
 
-
-    @Factory
-    class Client {
-
-        @Singleton
-        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel):
-                RemoveChaveGrpcServiceGrpc.RemoveChaveGrpcServiceBlockingStub {
-            return RemoveChaveGrpcServiceGrpc.newBlockingStub(channel)
-        }
-    }
-
     @Singleton
     private fun chave(): ChavePix{
         return ChavePix(

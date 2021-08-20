@@ -8,7 +8,7 @@ import io.micronaut.grpc.server.GrpcServerChannel
 import javax.inject.Singleton
 
 @Factory
-class Client {
+class RegistraClient {
 
     @Singleton
     fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): RegistraChaveGrpcServiceGrpc.RegistraChaveGrpcServiceBlockingStub {

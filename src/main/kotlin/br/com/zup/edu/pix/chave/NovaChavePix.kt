@@ -32,8 +32,7 @@ class NovaChavePix(
         return ChavePix(
             clienteId = UUID.fromString(this.clienteId),
             tipoDeChave = TipoDeChave.valueOf(tipoDeChave!!.name),
-            chave = if (this.tipoDeChave == TipoDeChave.ALEATORIA) UUID.randomUUID().toString()
-            else this.chave!!,
+            chave = chave!!,
             tipoDeConta = TipoDeConta.valueOf(tipoDeConta!!.name),
             conta = conta
         )
