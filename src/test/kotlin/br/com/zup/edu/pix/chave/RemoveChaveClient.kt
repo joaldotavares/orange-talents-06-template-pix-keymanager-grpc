@@ -1,6 +1,6 @@
 package br.com.zup.edu.pix.chave
 
-import br.com.zup.edu.RemoveChaveGrpcServiceGrpc
+import br.com.zup.edu.RemoveChaveServiceGrpc
 import io.grpc.ManagedChannel
 import io.micronaut.context.annotation.Factory
 import io.micronaut.grpc.annotation.GrpcChannel
@@ -12,7 +12,7 @@ class RemoveChaveClient {
 
     @Singleton
     fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel):
-            RemoveChaveGrpcServiceGrpc.RemoveChaveGrpcServiceBlockingStub {
-        return RemoveChaveGrpcServiceGrpc.newBlockingStub(channel)
+            RemoveChaveServiceGrpc.RemoveChaveServiceBlockingStub {
+        return RemoveChaveServiceGrpc.newBlockingStub(channel)
     }
 }

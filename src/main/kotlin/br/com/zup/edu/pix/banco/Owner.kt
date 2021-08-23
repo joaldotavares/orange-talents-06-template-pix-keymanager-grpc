@@ -7,6 +7,6 @@ data class Owner(
 ){
     enum class OwnerType{
         NATURAL_PERSON,
-        LEAGL_PERSON
+        LEGAL_PERSON
     }
 }

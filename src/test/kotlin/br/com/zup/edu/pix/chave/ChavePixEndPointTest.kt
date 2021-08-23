@@ -1,9 +1,11 @@
 package br.com.zup.edu.pix.chave
 
-import br.com.zup.edu.RegistraChaveGrpcServiceGrpc
 import br.com.zup.edu.RegistraChavePixRequest
+import br.com.zup.edu.RegistraChaveServiceGrpc
 import br.com.zup.edu.TipoDeChave
 import br.com.zup.edu.TipoDeConta
+import br.com.zup.edu.pix.banco.*
+import br.com.zup.edu.pix.client.BancoCentralClient
 import br.com.zup.edu.pix.client.ContasItauClient
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.DetalhesDaConta
@@ -25,18 +27,24 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito
+import org.slf4j.LoggerFactory
+import java.time.LocalDateTime
 import java.util.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @MicronautTest(transactional = false)
 internal class ChavePixEndPointTest(
     private val repository: ChavePixRepository,
-    private val grpcClient: RegistraChaveGrpcServiceGrpc.RegistraChaveGrpcServiceBlockingStub
+    private val grpcClient: RegistraChaveServiceGrpc.RegistraChaveServiceBlockingStub
 ) {
+
+    private val logger = LoggerFactory.getLogger(ChavePixEndPointTest::class.java)
 
     @Inject
     lateinit var itauClient: ContasItauClient
+
+    @Inject
+    lateinit var bcbClient: BancoCentralClient
 
     private val CLIENTE_ID = UUID.randomUUID().toString()
     private val CONTA_CORRENTE = TipoDeConta.CONTA_CORRENTE.toString()
@@ -48,20 +56,23 @@ internal class ChavePixEndPointTest(
 
     @Test
     fun `deve registrar uma nova chave do tipo cpf`() {
-        Mockito.`when`(itauClient.buscarContaPorTipo(CLIENTE_ID, CONTA_CORRENTE))
+        Mockito.`when`(itauClient.buscarContaPorTipo(clienteId = CLIENTE_ID, TipoDeConta.CONTA_CORRENTE.toString()))
             .thenReturn(HttpResponse.ok(detalhesDaConta()))
+
+        Mockito.`when`(bcbClient.create(createPixRequest()))
+            .thenReturn(HttpResponse.created(createPixResponse()))
 
         val response = grpcClient.registrar(
             RegistraChavePixRequest.newBuilder()
                 .setClienteId(CLIENTE_ID)
                 .setTipoDeChave(TipoDeChave.CPF)
-                .setChave("01567920990")
+                .setChave("61176001515")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
                 .build()
         )
-
+        logger.info(response.clienteId)
         with(response) {
-            assertEquals(CLIENTE_ID, clienteId)
+            assertEquals(CLIENTE_ID.toString(), clienteId)
             assertNotNull(pixId)
         }
     }
@@ -179,18 +190,48 @@ internal class ChavePixEndPointTest(
 
     }
 
-    @MockBean(ContasItauClient::class)
-    fun itauClient(): ContasItauClient? {
-        return Mockito.mock(ContasItauClient::class.java)
+    @Test
+    fun `nao deve registrar uma nova chave sem registrar no BCB`() {
+        Mockito.`when`(itauClient.buscarContaPorTipo(clienteId = CLIENTE_ID, "CONTA_CORRENTE"))
+            .thenReturn(HttpResponse.ok(detalhesDaConta()))
+
+        Mockito.`when`(bcbClient.create(createPixRequest()))
+            .thenReturn(HttpResponse.badRequest())
+
+        val erro = assertThrows<StatusRuntimeException> {
+            grpcClient.registrar(
+                RegistraChavePixRequest.newBuilder()
+                    .setClienteId(CLIENTE_ID)
+                    .setTipoDeChave(TipoDeChave.CPF)
+                    .setChave("61176001515")
+                    .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
+                    .build()
+            )
+        }
+
+        with(erro) {
+            assertEquals(Status.UNKNOWN.code, status.code)
+            assertEquals("Erro ao regitrar Chave", status.description)
+        }
     }
 
     @Factory
     class Client {
 
         @Bean
-        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): RegistraChaveGrpcServiceGrpc.RegistraChaveGrpcServiceBlockingStub {
-            return RegistraChaveGrpcServiceGrpc.newBlockingStub(channel)
+        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): RegistraChaveServiceGrpc.RegistraChaveServiceBlockingStub {
+            return RegistraChaveServiceGrpc.newBlockingStub(channel)
         }
+    }
+
+    @MockBean(ContasItauClient::class)
+    fun itauClient(): ContasItauClient? {
+        return Mockito.mock(ContasItauClient::class.java)
+    }
+
+    @MockBean(BancoCentralClient::class)
+    fun brbClient(): BancoCentralClient? {
+        return Mockito.mock(BancoCentralClient::class.java)
     }
 
     private fun detalhesDaConta(): DetalhesDaConta {
@@ -199,7 +240,34 @@ internal class ChavePixEndPointTest(
             InstituicaoResponse("BANCO ITAU", "60701190"),
             "0001",
             "376709",
-            TitularResponse("Joaldo Tavares", "97650865432")
+            TitularResponse("Joaldo Tavares", "61176001515")
+        )
+    }
+
+    private fun createPixRequest(): CreatePixKeyRequest {
+        return CreatePixKeyRequest(
+            keyType = PixKeyType.CPF,
+            key = "61176001515",
+            bankAccount = BankAccount(
+                "60701190",
+                "0001",
+                "291900",
+                accountType = BankAccount.AccountType.CACC
+            ), owner = Owner(
+                type = Owner.OwnerType.NATURAL_PERSON,
+                "Teca",
+                "61176001515"
+            )
+        )
+    }
+
+    private fun createPixResponse(): CreatePixKeyResponse {
+        return CreatePixKeyResponse(
+            keyType = createPixRequest().keyType,
+            key = createPixRequest().key,
+            bankAccount = createPixRequest().bankAccount,
+            owner = createPixRequest().owner,
+            createdAt = LocalDateTime.now()
         )
     }
 }

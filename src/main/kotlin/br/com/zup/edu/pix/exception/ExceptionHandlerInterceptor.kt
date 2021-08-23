@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class ExceptionHandlerInterceptor(@Inject private val resolver: ExceptionHandlerResolver) :
     MethodInterceptor<BindableService, Any> {
-    override fun intercept(context: MethodInvocationContext<BindableService, Any>): Any? {
+    override fun intercept(context: MethodInvocationContext<BindableService, Any?>): Any? {
         try {
             return context.proceed()
         } catch (e: Exception) {
@@ -23,7 +23,7 @@ class ExceptionHandlerInterceptor(@Inject private val resolver: ExceptionHandler
         }
     }
 
-    private class GrpcEndpointArguments(val context: MethodInvocationContext<BindableService, Any>) {
+    private class GrpcEndpointArguments(val context: MethodInvocationContext<BindableService, Any?>) {
 
         fun response(): StreamObserver<*> {
             return context.parameterValues[1] as StreamObserver<*>

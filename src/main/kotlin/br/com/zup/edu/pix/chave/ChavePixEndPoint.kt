@@ -1,8 +1,8 @@
 package br.com.zup.edu.pix.chave
 
-import br.com.zup.edu.RegistraChaveGrpcServiceGrpc
 import br.com.zup.edu.RegistraChavePixRequest
 import br.com.zup.edu.RegistraChavePixResponse
+import br.com.zup.edu.RegistraChaveServiceGrpc
 import br.com.zup.edu.pix.exception.ErrorHandler
 import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @ErrorHandler
 @Singleton
 class ChavePixEndPoint(@Inject private val service: ChavePixService) :
-    RegistraChaveGrpcServiceGrpc.RegistraChaveGrpcServiceImplBase() {
+    RegistraChaveServiceGrpc.RegistraChaveServiceImplBase() {
 
     private val logger = LoggerFactory.getLogger(ChavePixEndPoint::class.java)
 

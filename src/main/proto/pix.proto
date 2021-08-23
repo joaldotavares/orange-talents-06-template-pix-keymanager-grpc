@@ -5,11 +5,11 @@ option java_outer_classname = "KeymanagerGrpc";
 
 package br.com.zup.edu;
 
-service RegistraChaveGrpcService {
+service RegistraChaveService {
   rpc registrar (RegistraChavePixRequest) returns (RegistraChavePixResponse) {}
 }
 
-service RemoveChaveGrpcService{
+service RemoveChaveService{
   rpc remover(RemoveChavePixRequest) returns (RemoveChavePixResponse) {}
 }
 

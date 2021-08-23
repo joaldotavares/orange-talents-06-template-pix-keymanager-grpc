@@ -1,7 +1,7 @@
 package br.com.zup.edu.pix.chave
 
-import br.com.zup.edu.RemoveChaveGrpcServiceGrpc
 import br.com.zup.edu.RemoveChavePixRequest
+import br.com.zup.edu.RemoveChaveServiceGrpc
 import br.com.zup.edu.pix.client.ContasItauClient
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.TipoDeConta
@@ -23,7 +23,7 @@ import javax.inject.Singleton
 @MicronautTest(transactional = false)
 internal class RemoveChaveEndpointTest(
     private val repository: ChavePixRepository,
-    private val grpcClient: RemoveChaveGrpcServiceGrpc.RemoveChaveGrpcServiceBlockingStub
+    private val grpcClient: RemoveChaveServiceGrpc.RemoveChaveServiceBlockingStub
 ) {
 
     @Inject

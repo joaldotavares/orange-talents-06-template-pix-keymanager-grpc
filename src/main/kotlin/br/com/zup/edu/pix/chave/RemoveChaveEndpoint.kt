@@ -1,8 +1,8 @@
 package br.com.zup.edu.pix.chave
 
-import br.com.zup.edu.RemoveChaveGrpcServiceGrpc
 import br.com.zup.edu.RemoveChavePixRequest
 import br.com.zup.edu.RemoveChavePixResponse
+import br.com.zup.edu.RemoveChaveServiceGrpc
 import br.com.zup.edu.pix.exception.ErrorHandler
 import io.grpc.stub.StreamObserver
 import javax.inject.Inject
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @ErrorHandler
 @Singleton
 class RemoveChaveEndpoint(@Inject private val service: RemoveChaveService) :
-    RemoveChaveGrpcServiceGrpc.RemoveChaveGrpcServiceImplBase() {
+    RemoveChaveServiceGrpc.RemoveChaveServiceImplBase() {
 
     override fun remover(
         request: RemoveChavePixRequest,
