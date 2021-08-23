@@ -3,7 +3,7 @@ package br.com.zup.edu.pix.banco
 import br.com.zup.edu.pix.chave.TipoDeChave
 import java.lang.IllegalArgumentException
 
-enum class TipoChave(val tipo : TipoDeChave?) {
+enum class PixKeyType(val domainType : TipoDeChave?) {
     CPF(TipoDeChave.CPF),
     CNPJ(null),
     PHONE(TipoDeChave.CELULAR),
@@ -11,10 +11,10 @@ enum class TipoChave(val tipo : TipoDeChave?) {
     RANDOM(TipoDeChave.ALEATORIA);
 
     companion object{
-        private val mapping = TipoChave.values().associateBy(TipoChave::tipo)
+        private val mapping = PixKeyType.values().associateBy(PixKeyType::domainType)
 
-        fun by(tipo: TipoDeChave): TipoChave{
-            return mapping[tipo] ?: throw IllegalArgumentException("Tipo de chave inválida")
+        fun by(domainType: TipoDeChave): PixKeyType{
+            return mapping[domainType] ?: throw IllegalArgumentException("Tipo de chave inválida")
         }
     }
 }
