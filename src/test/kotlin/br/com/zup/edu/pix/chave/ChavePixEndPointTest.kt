@@ -82,11 +82,26 @@ internal class ChavePixEndPointTest(
         Mockito.`when`(itauClient.buscarContaPorTipo(CLIENTE_ID, CONTA_CORRENTE))
             .thenReturn(HttpResponse.ok(detalhesDaConta()))
 
+        Mockito.`when`(bcbClient.create(CreatePixKeyRequest(
+            keyType = PixKeyType.PHONE,
+            key = "+5571996583398",
+            bankAccount = BankAccount(
+                "60701190",
+                "0001",
+                "291900",
+                accountType = BankAccount.AccountType.CACC
+            ), owner = Owner(
+                type = Owner.OwnerType.NATURAL_PERSON,
+                "Joaldo Tavares",
+                "61176001515"
+            ))))
+            .thenReturn(HttpResponse.created(createPixResponse()))
+
         val response = grpcClient.registrar(
             RegistraChavePixRequest.newBuilder()
                 .setClienteId(CLIENTE_ID)
                 .setTipoDeChave(TipoDeChave.CELULAR)
-                .setChave("71996095632")
+                .setChave("+5571996583398")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
                 .build()
         )
@@ -101,6 +116,21 @@ internal class ChavePixEndPointTest(
     fun `deve registrar uma nova chave do tipo email`() {
         Mockito.`when`(itauClient.buscarContaPorTipo(CLIENTE_ID, CONTA_CORRENTE))
             .thenReturn(HttpResponse.ok(detalhesDaConta()))
+
+        Mockito.`when`(bcbClient.create(CreatePixKeyRequest(
+            keyType = PixKeyType.EMAIL,
+            key = "tetste@zup.com.br",
+            bankAccount = BankAccount(
+                "60701190",
+                "0001",
+                "291900",
+                accountType = BankAccount.AccountType.CACC
+            ), owner = Owner(
+                type = Owner.OwnerType.NATURAL_PERSON,
+                "Joaldo Tavares",
+                "61176001515"
+            ))))
+            .thenReturn(HttpResponse.created(createPixResponse()))
 
         val response = grpcClient.registrar(
             RegistraChavePixRequest.newBuilder()
@@ -185,7 +215,7 @@ internal class ChavePixEndPointTest(
         }
 
         with(erro) {
-            assertEquals(Status.UNKNOWN.code, status.code)
+            assertEquals(Status.INVALID_ARGUMENT.code, status.code)
         }
 
     }
@@ -210,8 +240,8 @@ internal class ChavePixEndPointTest(
         }
 
         with(erro) {
-            assertEquals(Status.UNKNOWN.code, status.code)
-            assertEquals("Erro ao regitrar Chave", status.description)
+            assertEquals(Status.FAILED_PRECONDITION.code, status.code)
+            assertEquals("Erro ao registrar chave no banco central", status.description)
         }
     }
 
@@ -239,7 +269,7 @@ internal class ChavePixEndPointTest(
             "CONTA_CORRENTE",
             InstituicaoResponse("BANCO ITAU", "60701190"),
             "0001",
-            "376709",
+            "291900",
             TitularResponse("Joaldo Tavares", "61176001515")
         )
     }
@@ -255,7 +285,7 @@ internal class ChavePixEndPointTest(
                 accountType = BankAccount.AccountType.CACC
             ), owner = Owner(
                 type = Owner.OwnerType.NATURAL_PERSON,
-                "Teca",
+                "Joaldo Tavares",
                 "61176001515"
             )
         )
