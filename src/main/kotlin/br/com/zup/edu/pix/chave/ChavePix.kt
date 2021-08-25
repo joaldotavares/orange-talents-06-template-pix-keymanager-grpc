@@ -1,5 +1,6 @@
 package br.com.zup.edu.pix.chave
 
+import br.com.zup.edu.pix.chave.TipoDeChave
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.TipoDeConta
 import java.time.LocalDateTime
@@ -7,14 +8,15 @@ import java.util.*
 import javax.persistence.*
 import javax.validation.Valid
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(uniqueConstraints = [UniqueConstraint(
-    name = "uk_chave_pix",
-    columnNames = ["chave"]
-)])
+@Table(
+    uniqueConstraints = [UniqueConstraint(
+        name = "uk_chave_pix",
+        columnNames = ["chave"]
+    )]
+)
 class ChavePix(
 
     @field:NotNull
@@ -33,6 +35,9 @@ class ChavePix(
     @Embedded
     val conta: ContaAssociada
 ) {
+    fun pertenceAo(clienteIdUuid: UUID): Boolean {
+        return UUID.fromString(clienteIdUuid.toString()) == this.clienteId
+    }
 
     @Id
     @GeneratedValue

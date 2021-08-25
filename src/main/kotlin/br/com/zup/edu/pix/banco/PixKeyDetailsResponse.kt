@@ -1,5 +1,6 @@
 package br.com.zup.edu.pix.banco
 
+import br.com.zup.edu.pix.chave.consulta.ChavePixInfo
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.TipoDeConta
 import java.time.LocalDateTime
@@ -13,19 +14,21 @@ data class PixKeyDetailsResponse(
 ) {
     fun toModel(): ChavePixInfo {
         return ChavePixInfo(
-            tipo = keyType.domainType!!,
-            chave = this.key,
-            tipoDeConta = when (this.bankAccount.accountType) {
+            tipoDeChave = keyType.domainType!!,
+            chave = key,
+            tipoDeConta =when(this.bankAccount.accountType){
                 BankAccount.AccountType.CACC -> TipoDeConta.CONTA_CORRENTE
                 BankAccount.AccountType.SVGS -> TipoDeConta.CONTA_POUPANCA
-            },
-            conta = ContaAssociada(
+            }, conta = ContaAssociada(
                 instituicao = bankAccount.participant,
                 nomeDoTitular = owner.name,
                 cpfDoTitular = owner.taxIdNumber,
                 agencia = bankAccount.branch,
                 numeroDaConta = bankAccount.accountNumber
-            )
+            ),
+            criadaEm = createdAt,
+            pixId = null,
+            clienteId = null
         )
     }
 }
