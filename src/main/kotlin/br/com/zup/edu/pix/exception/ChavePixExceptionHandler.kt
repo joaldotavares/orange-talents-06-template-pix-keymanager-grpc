@@ -8,7 +8,7 @@ class ChavePixExceptionHandler : ExceptionHandler<ChavePixException> {
 
     override fun handle(exception: ChavePixException): ExceptionHandler.StatusWithDetails {
         return ExceptionHandler.StatusWithDetails(
-            Status.ALREADY_EXISTS
+            Status.NOT_FOUND
                 .withDescription(exception.message)
                 .withCause(exception)
         )
