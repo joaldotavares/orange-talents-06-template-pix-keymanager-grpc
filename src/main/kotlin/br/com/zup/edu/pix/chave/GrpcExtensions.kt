@@ -6,6 +6,7 @@ import br.com.zup.edu.TipoDeChave.ALEATORIA
 import br.com.zup.edu.TipoDeChave.UNKNOWN_TIPO_CHAVE
 import br.com.zup.edu.TipoDeConta.UNKNOWN_TIPO_CONTA
 import br.com.zup.edu.pix.chave.consulta.Filtro
+import br.com.zup.edu.pix.chave.cria.NovaChavePix
 import br.com.zup.edu.pix.conta.TipoDeConta
 import io.micronaut.validation.validator.Validator
 import java.util.*

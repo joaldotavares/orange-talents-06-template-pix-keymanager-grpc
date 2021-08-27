@@ -6,7 +6,7 @@ import br.com.zup.edu.pix.banco.BankAccount
 import br.com.zup.edu.pix.banco.Owner
 import br.com.zup.edu.pix.banco.PixKeyDetailsResponse
 import br.com.zup.edu.pix.banco.PixKeyType
-import br.com.zup.edu.pix.chave.ChavePix
+import br.com.zup.edu.pix.chave.cria.ChavePix
 import br.com.zup.edu.pix.chave.ChavePixEndPointTest
 import br.com.zup.edu.pix.chave.ChavePixRepository
 import br.com.zup.edu.pix.chave.TipoDeChave

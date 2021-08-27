@@ -1,6 +1,7 @@
-package br.com.zup.edu.pix.chave
+package br.com.zup.edu.pix.chave.remove
 
 import br.com.zup.edu.pix.banco.DeletePixKeyRequest
+import br.com.zup.edu.pix.chave.ChavePixRepository
 import br.com.zup.edu.pix.client.BancoCentralClient
 import br.com.zup.edu.pix.exception.ChavePixException
 import br.com.zup.edu.pix.validacao.ValidUUID

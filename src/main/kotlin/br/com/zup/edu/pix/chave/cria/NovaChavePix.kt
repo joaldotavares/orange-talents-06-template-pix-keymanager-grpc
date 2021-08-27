@@ -1,5 +1,6 @@
-package br.com.zup.edu.pix.chave
+package br.com.zup.edu.pix.chave.cria
 
+import br.com.zup.edu.pix.chave.TipoDeChave
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.TipoDeConta
 import br.com.zup.edu.pix.validacao.ValidPix

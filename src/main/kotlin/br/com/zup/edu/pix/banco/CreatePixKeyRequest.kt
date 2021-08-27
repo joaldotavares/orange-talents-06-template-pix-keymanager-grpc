@@ -1,6 +1,6 @@
 package br.com.zup.edu.pix.banco
 
-import br.com.zup.edu.pix.chave.ChavePix
+import br.com.zup.edu.pix.chave.cria.ChavePix
 import br.com.zup.edu.pix.conta.ContaAssociada
 
 data class CreatePixKeyRequest(

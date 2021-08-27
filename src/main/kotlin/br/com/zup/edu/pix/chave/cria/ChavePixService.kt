@@ -1,6 +1,7 @@
-package br.com.zup.edu.pix.chave
+package br.com.zup.edu.pix.chave.cria
 
 import br.com.zup.edu.pix.banco.CreatePixKeyRequest
+import br.com.zup.edu.pix.chave.ChavePixRepository
 import br.com.zup.edu.pix.client.BancoCentralClient
 import br.com.zup.edu.pix.client.ContasItauClient
 import br.com.zup.edu.pix.exception.ChavePixException

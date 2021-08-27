@@ -4,6 +4,7 @@ import br.com.zup.edu.RemoveChavePixRequest
 import br.com.zup.edu.RemoveChaveServiceGrpc
 import br.com.zup.edu.pix.banco.DeletePixKeyRequest
 import br.com.zup.edu.pix.banco.DeletePixKeyResponse
+import br.com.zup.edu.pix.chave.cria.ChavePix
 import br.com.zup.edu.pix.client.BancoCentralClient
 import br.com.zup.edu.pix.client.ContasItauClient
 import br.com.zup.edu.pix.conta.ContaAssociada

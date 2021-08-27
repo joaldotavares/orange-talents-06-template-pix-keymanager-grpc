@@ -1,6 +1,6 @@
 package br.com.zup.edu.pix.chave.consulta
 
-import br.com.zup.edu.pix.chave.ChavePix
+import br.com.zup.edu.pix.chave.cria.ChavePix
 import br.com.zup.edu.pix.chave.TipoDeChave
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.TipoDeConta

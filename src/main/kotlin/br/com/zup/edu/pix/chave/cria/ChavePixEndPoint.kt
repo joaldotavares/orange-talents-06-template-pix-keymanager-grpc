@@ -1,8 +1,9 @@
-package br.com.zup.edu.pix.chave
+package br.com.zup.edu.pix.chave.cria
 
 import br.com.zup.edu.RegistraChavePixRequest
 import br.com.zup.edu.RegistraChavePixResponse
 import br.com.zup.edu.RegistraChaveServiceGrpc
+import br.com.zup.edu.pix.chave.toModel
 import br.com.zup.edu.pix.exception.ErrorHandler
 import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
