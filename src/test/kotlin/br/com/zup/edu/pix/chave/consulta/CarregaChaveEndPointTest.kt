@@ -6,10 +6,10 @@ import br.com.zup.edu.pix.banco.BankAccount
 import br.com.zup.edu.pix.banco.Owner
 import br.com.zup.edu.pix.banco.PixKeyDetailsResponse
 import br.com.zup.edu.pix.banco.PixKeyType
-import br.com.zup.edu.pix.chave.cria.ChavePix
-import br.com.zup.edu.pix.chave.ChavePixEndPointTest
 import br.com.zup.edu.pix.chave.ChavePixRepository
 import br.com.zup.edu.pix.chave.TipoDeChave
+import br.com.zup.edu.pix.chave.cria.ChavePix
+import br.com.zup.edu.pix.chave.cria.ChavePixEndPointTest
 import br.com.zup.edu.pix.client.BancoCentralClient
 import br.com.zup.edu.pix.conta.ContaAssociada
 import br.com.zup.edu.pix.conta.TipoDeConta
@@ -49,21 +49,27 @@ internal class CarregaChaveEndPointTest(
 
     @BeforeEach
     fun setUp() {
-        chaveRepository.save(chave(
-            clienteId = CLIENTE_ID,
-            TipoDeChave.CELULAR,
-            "+5571996583398"
-        ))
-        chaveRepository.save(chave(
-            clienteId = CLIENTE_ID,
-            TipoDeChave.ALEATORIA,
-            "notblank!"
-        ))
-        chaveRepository.save(chave(
-            clienteId = CLIENTE_ID,
-            TipoDeChave.EMAIL,
-            "joaldo@email.com"
-        ))
+        chaveRepository.save(
+            chave(
+                clienteId = CLIENTE_ID,
+                TipoDeChave.CELULAR,
+                "+5571996583398"
+            )
+        )
+        chaveRepository.save(
+            chave(
+                clienteId = CLIENTE_ID,
+                TipoDeChave.ALEATORIA,
+                "notblank!"
+            )
+        )
+        chaveRepository.save(
+            chave(
+                clienteId = CLIENTE_ID,
+                TipoDeChave.EMAIL,
+                "joaldo@email.com"
+            )
+        )
     }
 
     @AfterEach
@@ -101,7 +107,7 @@ internal class CarregaChaveEndPointTest(
     }
 
     @Test
-    fun `nao deve carregar id do pix e do cliente se o filtro for invaido`(){
+    fun `nao deve carregar id do pix e do cliente se o filtro for invaido`() {
 
         val erro = assertThrows<StatusRuntimeException> {
             grpcClient.carregar(
@@ -116,7 +122,7 @@ internal class CarregaChaveEndPointTest(
             )
         }
 
-        with(erro){
+        with(erro) {
             assertEquals(Status.INVALID_ARGUMENT.code, status.code)
         }
     }
@@ -139,7 +145,7 @@ internal class CarregaChaveEndPointTest(
 
         logger.info(erro.toString())
 
-        with(erro){
+        with(erro) {
             assertEquals(Status.NOT_FOUND.code, status.code)
             assertEquals("Chave não encontrada", status.description)
             assertEquals(3, chaveRepository.count())
@@ -147,14 +153,16 @@ internal class CarregaChaveEndPointTest(
     }
 
     @Test
-    fun `nao deve carregar chave quando o registro existir localmente apenas`(){
+    fun `nao deve carregar chave quando o registro existir localmente apenas`() {
         val chave = chaveRepository.findByChave("+5571996583398").get()
 
-        val response = grpcClient.carregar(CarregaChavePixRequest.newBuilder()
-            .setChave(chave.chave)
-            .build())
+        val response = grpcClient.carregar(
+            CarregaChavePixRequest.newBuilder()
+                .setChave(chave.chave)
+                .build()
+        )
 
-        with(response){
+        with(response) {
             assertEquals(chave.tipoDeChave.name, this.chave.tipoDeChave.name)
             assertEquals(chave.chave.toString(), this.chave.chave)
             assertEquals(chave.conta.instituicao, this.chave.conta.instituicao)
@@ -167,16 +175,18 @@ internal class CarregaChaveEndPointTest(
     }
 
     @Test
-    fun `nao deve carregar chave quando o registro nao existir localmente somente no bcb`(){
+    fun `nao deve carregar chave quando o registro nao existir localmente somente no bcb`() {
         val bcb = pixKeyDetailsResponse()
         Mockito.`when`(bcbClient.buscarPorChave("bcb@email.com"))
             .thenReturn(HttpResponse.ok(pixKeyDetailsResponse()))
 
-        val response = grpcClient.carregar(CarregaChavePixRequest.newBuilder()
-            .setChave("bcb@email.com")
-            .build())
+        val response = grpcClient.carregar(
+            CarregaChavePixRequest.newBuilder()
+                .setChave("bcb@email.com")
+                .build()
+        )
 
-        with(response){
+        with(response) {
             assertEquals("null", this.pixId)
             assertEquals("null", this.clienteId)
             assertEquals(bcb.keyType.name, this.chave.tipoDeChave.name)
@@ -185,13 +195,15 @@ internal class CarregaChaveEndPointTest(
     }
 
     @Test
-    fun `nao deve carregar chave se o filtro for invalido`(){
+    fun `nao deve carregar chave se o filtro for invalido`() {
 
         val erro = assertThrows<StatusRuntimeException> {
-            grpcClient.carregar(CarregaChavePixRequest.newBuilder()
-                .build())
+            grpcClient.carregar(
+                CarregaChavePixRequest.newBuilder()
+                    .build()
+            )
         }
-        with(erro){
+        with(erro) {
             assertEquals(Status.INVALID_ARGUMENT.code, status.code)
             assertEquals("Chave inválida ou não informada", status.description)
         }
@@ -228,7 +240,7 @@ internal class CarregaChaveEndPointTest(
         )
     }
 
-    private fun pixKeyDetailsResponse(): PixKeyDetailsResponse{
+    private fun pixKeyDetailsResponse(): PixKeyDetailsResponse {
         return PixKeyDetailsResponse(
             keyType = PixKeyType.EMAIL,
             key = "bcb@email.com",

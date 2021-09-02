@@ -1,11 +1,11 @@
-package br.com.zup.edu.pix.chave
+package br.com.zup.edu.pix.chave.cria
 
 import br.com.zup.edu.RegistraChavePixRequest
 import br.com.zup.edu.RegistraChaveServiceGrpc
 import br.com.zup.edu.TipoDeChave
 import br.com.zup.edu.TipoDeConta
 import br.com.zup.edu.pix.banco.*
-import br.com.zup.edu.pix.chave.cria.ChavePix
+import br.com.zup.edu.pix.chave.ChavePixRepository
 import br.com.zup.edu.pix.client.BancoCentralClient
 import br.com.zup.edu.pix.client.ContasItauClient
 import br.com.zup.edu.pix.conta.ContaAssociada
