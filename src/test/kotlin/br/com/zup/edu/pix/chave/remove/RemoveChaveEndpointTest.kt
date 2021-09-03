@@ -1,4 +1,4 @@
-package br.com.zup.edu.remove
+package br.com.zup.edu.pix.chave.remove
 
 import br.com.zup.edu.RemoveChavePixRequest
 import br.com.zup.edu.RemoveChaveServiceGrpc
