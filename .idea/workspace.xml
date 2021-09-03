@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14c25931-923b-4292-be98-f501fe4720f1" name="Default Changelist" comment="refatorando testes e teste listando as chaves do cliente">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/micronaut-cli.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/Application.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/BankAccount.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/ChavePixInfo.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/CreatePixKeyRequest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/CreatePixKeyResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/DeletePixKeyRequest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/DeletePixKeyResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/Owner.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/PixKeyDetailsResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/banco/PixKeyType.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/ChavePixRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/GrpcExtensions.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/TipoDeChave.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/consulta/CarregaChaveEndPoint.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/consulta/CarregaChavePixConverter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/consulta/ChavePixInfo.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/consulta/Filtro.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/cria/ChavePix.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/cria/ChavePixEndPoint.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/cria/ChavePixService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/cria/NovaChavePix.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/lista/ListaChavePixEndpoint.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/remove/RemoveChaveEndpoint.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/chave/remove/RemoveChaveService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/client/BancoCentralClient.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/client/ContasItauClient.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/conta/ContaAssociada.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/conta/DetalhesDaConta.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/conta/TipoDeConta.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ChavePixException.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ChavePixExceptionHandler.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ChavePixNaoEncontradaHandler.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ErrorHandler.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ExceptionHandler.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ExceptionHandlerInterceptor.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/exception/ExceptionHandlerResolver.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/validacao/ValidPix.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/validacao/ValidPixValidator.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/kotlin/br/com/zup/edu/pix/validacao/ValidUUID.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/proto/pix.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/test/kotlin/br/com/zup/edu/PixTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/test/kotlin/br/com/zup/edu/pix/chave/consulta/CarregaChaveEndPointTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/test/kotlin/br/com/zup/edu/pix/chave/cria/ChavePixEndPointTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/test/kotlin/br/com/zup/edu/pix/chave/lista/ListaChavePixEndpointTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/test/kotlin/br/com/zup/edu/remove/RemoveChaveEndpointTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key-manager-grpc/src/test/resources/application-test.yml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="pix" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Annotation" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Sealed Class" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Data Class" />
+        <option value="Kotlin Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
+  <component name="ProjectId" id="1wV7bRHLuHOp2zkQZB8ZT9zX2UF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\joaldo.junior\git\orange-talents-06-template-pix-keymanager-grpc\src\test\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\joaldo.junior\git\orange-talents-06-template-pix-keymanager-grpc\src\main\kotlin\br\com\zup\edu\pix\chave" />
+      <recent name="C:\Users\joaldo.junior\git\orange-talents-06-template-pix-keymanager-grpc\src\main\kotlin\br\com\zup\edu\pix\chave\lista" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="br.com.zup.edu.pix.banco" />
+      <recent name="br.com.zup.edu.pix.validacao" />
+      <recent name="br.com.zup.edu.pix.chave" />
+      <recent name="br.com.zup.edu.chave" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="br.com.zup.edu.pix.chave.cria" />
+      <recent name="br.com.zup.edu.remove" />
+      <recent name="br.com.zup.edu.pix.chave.remove" />
+      <recent name="br.com.zup.edu.pix.chave" />
+      <recent name="br.com.zup.edu.pix.chave.consulta" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="br.com.zup.edu" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="br.com.zup.edu.pix.chave.lista" />
+      <recent name="br.com.zup.edu.pix.chave.consulta" />
+      <recent name="br.com.zup.edu.pix.chave" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle clean build" />
+      <command value="gradle clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.ListaChavePixEndpointTest.deve listar as chaves do cliente">
+    <configuration name="CarregaChaveEndPointTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;br.com.zup.edu.pix.chave.consulta.CarregaChaveEndPointTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarregaChaveEndPointTest.nao deve carregar chave por valor se o filtro for invalido" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;br.com.zup.edu.pix.chave.consulta.CarregaChaveEndPointTest.nao deve carregar chave por valor se o filtro for invalido&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarregaChaveEndPointTest.nao deve carregar chave se o filtro for invalido" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;br.com.zup.edu.pix.chave.consulta.CarregaChaveEndPointTest.nao deve carregar chave se o filtro for invalido&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ListaChavePixEndpointTest.deve listar as chaves do cliente" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;br.com.zup.edu.pix.chave.lista.ListaChavePixEndpointTest.deve listar as chaves do cliente&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.zup.edu.ApplicationKt" />
+      <module name="pix.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ListaChavePixEndpointTest.deve listar as chaves do cliente" />
+        <item itemvalue="Kotlin.ApplicationKt" />
+        <item itemvalue="Gradle.CarregaChaveEndPointTest" />
+        <item itemvalue="Gradle.CarregaChaveEndPointTest.nao deve carregar chave se o filtro for invalido" />
+        <item itemvalue="Gradle.CarregaChaveEndPointTest.nao deve carregar chave por valor se o filtro for invalido" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14c25931-923b-4292-be98-f501fe4720f1" name="Default Changelist" comment="" />
+      <created>1628531973583</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628531973583</updated>
+    </task>
+    <task id="LOCAL-00001" summary="setup inicial">
+      <created>1628533243134</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628533243134</updated>
+    </task>
+    <task id="LOCAL-00002" summary="registrando uma nova chave pix">
+      <created>1629157979249</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629157979249</updated>
+    </task>
+    <task id="LOCAL-00003" summary="testes de integracao de registro de chave pix">
+      <created>1629234999213</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1629234999213</updated>
+    </task>
+    <task id="LOCAL-00004" summary="removendo chave pix">
+      <created>1629288375838</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629288375838</updated>
+    </task>
+    <task id="LOCAL-00005" summary="testando remoção de chave pix">
+      <created>1629321386710</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629321386710</updated>
+    </task>
+    <task id="LOCAL-00006" summary="arrumando bug na chave aleatoria e teste">
+      <created>1629484576963</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1629484576963</updated>
+    </task>
+    <task id="LOCAL-00007" summary="primeira parte do excluirndo e inserir chaves no bcb">
+      <created>1629493654675</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1629493654675</updated>
+    </task>
+    <task id="LOCAL-00008" summary="registrando chave pix no banco central finalizado">
+      <created>1629741749647</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629741749647</updated>
+    </task>
+    <task id="LOCAL-00009" summary="problemas com mock dos teste do banco central">
+      <created>1629759924531</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1629759924531</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Teste de criacao e remocao de chave da api do banco central">
+      <created>1629826208241</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1629826208241</updated>
+    </task>
+    <task id="LOCAL-00011" summary="consultando dados de uma chave pix">
+      <created>1629927333034</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1629927333034</updated>
+    </task>
+    <task id="LOCAL-00012" summary="primeira parte dos testes de consulta">
+      <created>1630003318895</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630003318895</updated>
+    </task>
+    <task id="LOCAL-00013" summary="testes de consulta de dados da chave pix">
+      <created>1630083990341</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1630083990341</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Listando todas as chaves do cliente">
+      <created>1630097004606</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1630097004607</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refatorando testes e teste listando as chaves do cliente">
+      <created>1630610366470</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1630610366470</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="setup inicial" />
+    <MESSAGE value="registrando uma nova chave pix" />
+    <MESSAGE value="testes de integracao de registro de chave pix" />
+    <MESSAGE value="removendo chave pix" />
+    <MESSAGE value="testando remoção de chave pix" />
+    <MESSAGE value="arrumando bug na chave aleatoria e teste" />
+    <MESSAGE value="excluindo e inserindo chaves no bcb" />
+    <MESSAGE value="excluindo e inserindo chaves no bcb pt1" />
+    <MESSAGE value="primeira parte do excluirndo e inserir chaves no bcb" />
+    <MESSAGE value="registrando chave pix no banco central finalizado" />
+    <MESSAGE value="problemas com mock dos teste do banco central" />
+    <MESSAGE value="Teste de criacao e remocao de chave da api do banco central" />
+    <MESSAGE value="consultando dados de uma chave pix" />
+    <MESSAGE value="primeira parte dos testes de consulta" />
+    <MESSAGE value="testes de consulta de dados da chave pix" />
+    <MESSAGE value="Listando todas as chaves do cliente" />
+    <MESSAGE value="refatorando testes e teste listando as chaves do cliente" />
+    <option name="LAST_COMMIT_MESSAGE" value="refatorando testes e teste listando as chaves do cliente" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.junit.jupiter.api.extension.ParameterResolutionException" package="org.junit.jupiter.api.extension" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/pix$RemoveChaveEndpointTest.ic" NAME="RemoveChaveEndpointTest Coverage Results" MODIFIED="1629395388161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/pix$ChavePixEndPointTest.ic" NAME="ChavePixEndPointTest Coverage Results" MODIFIED="1629395433717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
